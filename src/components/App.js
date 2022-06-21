@@ -9,17 +9,18 @@ function App() {
   return (
     <div>
       <NavBar />
+      
       <Switch>
-          <Route exact path="/" >
-              <Home />
-          </Route>
-
           <Route path="/catalog" >
               <Catalog />
           </Route>
 
           <Route path="/profile" >
               <Profile />
+          </Route>
+
+          <Route exact path="/" >
+              <Home />
           </Route>
       </Switch>
     </div>

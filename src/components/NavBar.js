@@ -4,15 +4,15 @@ import { NavLink } from "react-router-dom";
 function NavBar() {
     return (
       <div>
-        <NavLink exact to="/" >
+        <NavLink to="/" exact>
           Home
         </NavLink>
         
-        <NavLink to="/catalog" >
+        <NavLink to="/catalog" exact>
           Food Catalog
         </NavLink>
 
-        <NavLink to="/profile">
+        <NavLink to="/profile" exact>
           User Profile
         </NavLink>
       </div>
