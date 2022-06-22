@@ -3,21 +3,30 @@ import NavBar from "./NavBar.js";
 import Home from "./Home.js";
 import Catalog from "./Catalog.js";
 import Profile from "./Profile.js";
+import History from './History.js';
+import Intake from './Intake.js';
 
 import '../styles/component.css';
 
 function App() {
-  return (
+  return (    
     <div>
-      <NavBar />
-      
+      <NavBar />   
       <Switch>
-          <Route path="/catalog" >
+          <Route exact path="/catalog" >
               <Catalog />
           </Route>
 
-          <Route path="/profile" >
+          <Route exact path="/profile" >
               <Profile />
+          </Route>
+
+          <Route exact path="/profile/history" >
+            <History />
+          </Route>
+
+          <Route exact path="/profile/intake" >
+            <Intake />
           </Route>
 
           <Route exact path="/" >
@@ -25,6 +34,7 @@ function App() {
           </Route>
       </Switch>
     </div>
+
   );
 }
 

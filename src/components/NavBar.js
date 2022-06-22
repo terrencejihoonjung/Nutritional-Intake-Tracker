@@ -17,7 +17,6 @@ function NavBar() {
         <NavLink to="/profile" exact>
           User Profile
         </NavLink>
-      
     </nav>
   );
 }
