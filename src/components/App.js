@@ -1,3 +1,4 @@
+import React , { useState, Component } from 'react'
 import { Route, Switch } from 'react-router-dom';
 import NavBar from "./NavBar.js";
 import Home from "./Home.js";
@@ -6,15 +7,23 @@ import Profile from "./Profile.js";
 import History from './History.js';
 import Intake from './Intake.js';
 
-import '../styles/component.css';
+
 
 function App() {
+  //States 
+  const [myFoods, setMyFoods] = useState([]);
+
+  //Event Handler Functions
+  function addFood(newFood) {
+    setMyFoods(currentMyFoods => [...myFoods, newFood]);
+  }
+
   return (    
     <div>
       <NavBar />   
       <Switch>
           <Route exact path="/catalog" >
-              <Catalog />
+              <Catalog myFoods={myFoods} addFood={addFood} />
           </Route>
 
           <Route exact path="/profile" >
