@@ -1,0 +1,29 @@
+.header {
+    background-color: #BADFE7;
+    margin-top: 24px;
+    height: 224px;
+    position: relative
+}
+
+.item-button {
+    position: absolute;
+    
+    bottom: 12px;
+    width: fill;
+    height: 36px;
+    margin-left: 264px;
+    margin-right: 264px;
+    border-radius: 15px;
+    text-align: center;
+    font-family: "Courrier";
+    font-size: 20px;
+
+    box-shadow: 0 6px 0 #388087;
+    background-color: #a1dee2;
+    transition: transform 0.3s ease-out, box-shadow;
+}
+
+.item-button:active {
+    box-shadow: none;
+    transform: translateY(6px);
+}

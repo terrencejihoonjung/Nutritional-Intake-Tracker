@@ -6,24 +6,22 @@ import Catalog from "./Catalog.js";
 import Profile from "./Profile.js";
 import History from './History.js';
 import Intake from './Intake.js';
+import Header from "./Header.js";
 
 
 
 function App() {
-  //States 
-  const [myFoods, setMyFoods] = useState([]);
 
-  //Event Handler Functions
-  function addFood(newFood) {
-    setMyFoods(currentMyFoods => [...myFoods, newFood]);
-  }
+  const [ foodToAddToUserProfile , setFoodToAddToUserProfile] = useState([])
 
   return (    
     <div>
-      <NavBar />   
+      <NavBar />
+      
       <Switch>
           <Route exact path="/catalog" >
-              <Catalog myFoods={myFoods} addFood={addFood} />
+              <Header foodToAddToUserProfile={foodToAddToUserProfile} setFoodToAddToUserProfile={setFoodToAddToUserProfile} />      
+              <Catalog foodToAddToUserProfile={foodToAddToUserProfile} setFoodToAddToUserProfile={setFoodToAddToUserProfile} />
           </Route>
 
           <Route exact path="/profile" >

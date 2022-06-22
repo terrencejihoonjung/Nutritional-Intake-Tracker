@@ -1,13 +1,16 @@
 import React from "react";
 
-function FoodCard( { food } ) {
+function FoodCard( { food , addFood } ) {
+
+    function handleClick() {
+        addFood(food["nix_item_id"])
+    }
 
     return (
-        <li className="card">
+        <div className="column" onClick={handleClick}>
             <img src={food.photo.thumb} alt={food['food_name']} />
-            <h4>{food.food_name}</h4>
-            <button className="card-button">Add to My Intake</button>
-        </li>
+            <h4>{food['food_name']}</h4>
+        </div>
     )
 }
 
