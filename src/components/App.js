@@ -1,9 +1,10 @@
-import '../App.css';
-import { Switch, Route } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom';
 import NavBar from "./NavBar.js";
 import Home from "./Home.js";
 import Catalog from "./Catalog.js";
 import Profile from "./Profile.js";
+
+import '../styles/component.css';
 
 function App() {
   return (

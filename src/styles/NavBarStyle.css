@@ -1,0 +1,30 @@
+/* Styling the NavBar */
+
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #BADFE7;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+nav a {
+    font-family: "Courier";
+    float: left;
+    display: block;
+    color: #F6F6F2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav a.active {
+    background-color: #388087;
+}
+
+nav a:hover:not(.active) {
+    background-color: #6FB3B8;
+}

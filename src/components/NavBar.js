@@ -1,22 +1,25 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import '../styles/NavBarStyle.css';
 
 function NavBar() {
-    return (
-      <div>
+
+  return (
+    <nav>
         <NavLink to="/" exact>
           Home
         </NavLink>
-        
+      
         <NavLink to="/catalog" exact>
           Food Catalog
         </NavLink>
-
+    
         <NavLink to="/profile" exact>
           User Profile
         </NavLink>
-      </div>
-    );
+      
+    </nav>
+  );
 }
 
 export default NavBar;
