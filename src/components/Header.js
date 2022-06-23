@@ -8,20 +8,10 @@ function Header( { foodProfile, setFoodProfile, addToHistoryAndIntake, removeFoo
         e.preventDefault();
 
         foodProfile.forEach( food => {
-            fetch("http://localhost:8000/foodHistory", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-            body: JSON.stringify(food)
-            })
-                .then(r => r.json())
-                .then(() => {
-                    addToHistoryAndIntake( food , 'foodHistory' )
-                    addToHistoryAndIntake( food , 'foodIntake' )
-                })
+            addToHistoryAndIntake( food , 'foodHistory' )
+            addToHistoryAndIntake( food , 'foodIntake' )
         })
-        
+
         setFoodProfile([])
     }
     

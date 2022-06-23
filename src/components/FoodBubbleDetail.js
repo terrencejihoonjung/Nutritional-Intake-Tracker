@@ -8,6 +8,7 @@ function FoodBubbleDetail({ food , removeFood }) {
     if (food.quantity === undefined) {
         setQuantity(1)
         food.quantity = quantity
+        food.id = food.fdcId
     } 
     else {
         food.quantity = quantity

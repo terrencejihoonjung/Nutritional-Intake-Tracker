@@ -45,11 +45,9 @@ function App() {
     })
     
     if ( thatFood.length === 0 ) {
-      console.log([false , undefined , undefined ])
-      return [false , undefined , undefined ]
+      return [false , undefined ]
     } else {
-      console.log([true , thatFood[0].id , thatFood[0].quantity ])
-      return [true , thatFood[0].id , thatFood[0].quantity ]
+      return [true , thatFood[0].quantity ]
     }
   }
 
@@ -58,21 +56,38 @@ function App() {
       
       if ( (! (isIn( food, foodHistory)[0]) ) ) {
           setFoodHistory(foodHistory => [...foodHistory, food]);
+
+          fetch("http://localhost:8000/foodHistory", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            body: JSON.stringify(food)
+            })
+                .then(r => r.json())
+                .then(() => {
+          })
+
         } else {
           
-          let originalQuantity = isIn( food, foodHistory)[2]
-          let originId = isIn( food, foodHistory)[1]
+          let originalQuantity = isIn( food, foodHistory)[1]
           let newQuantity = originalQuantity + food.quantity        
-
-          fetch(`http://localhost:8000/foodHistory${originId}`, {
+          console.log(food.fdcId)
+          fetch(`http://localhost:8000/foodHistory/${food.fdcId}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json"
             },
             body: JSON.stringify({quantity: newQuantity})
           })
-            .then(r => r.json())
-            .then()
+          .then(r => r.json())
+          .then( setFoodHistory(foodHistory.map( oneFood=>{
+            if (oneFood.fdcId === food.fdcId) {
+              return {...oneFood , quantity:newQuantity }
+            } else {
+              return {...oneFood}
+            }
+          })) )
         }
     }
 
