@@ -23,19 +23,61 @@ function App() {
           setFoodHistory([...data]);
         });
     } , [])
+  useEffect(()=>{
+      fetch("http://localhost:8000/dailyIntake")
+        .then((r) => r.json())
+        .then((data) => {
+          setFoodIntake([...data]);
+        });
+    } , [])
 
-  function addToHistoryAndIntake(foods) {
-    foods.forEach(food => {
-      if (!foodHistory.includes(food)) {
-        setFoodHistory(currentFoodHistory => [...foodHistory, food]);
-      }
-      
-      if (!foodIntake.includes(food)) {
-        setFoodIntake(currentFoodIntake => [...foodIntake, food]);
-      }
+  // function calculateInfo(string) {
+  //   const numString = parseInt(string, 10);
+  //   const calculatedValue = numString * quantity;
+  //   return calculatedValue.toString();
+  // }
+
+
+  function isIn( food, foods) {
+    
+    let thatFood = foods.filter( (oneFood) =>{
+      return oneFood.fdcId === food.fdcId
     })
+    
+    if ( thatFood.length === 0 ) {
+      console.log([false , undefined , undefined ])
+      return [false , undefined , undefined ]
+    } else {
+      console.log([true , thatFood[0].id , thatFood[0].quantity ])
+      return [true , thatFood[0].id , thatFood[0].quantity ]
+    }
   }
 
+  function addToHistoryAndIntake(food , foodList) {
+    if (foodList === "foodHistory") {
+      
+      if ( (! (isIn( food, foodHistory)[0]) ) ) {
+          setFoodHistory(foodHistory => [...foodHistory, food]);
+        } else {
+          
+          let originalQuantity = isIn( food, foodHistory)[2]
+          let originId = isIn( food, foodHistory)[1]
+          let newQuantity = originalQuantity + food.quantity        
+
+          fetch(`http://localhost:8000/foodHistory${originId}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({quantity: newQuantity})
+          })
+            .then(r => r.json())
+            .then()
+        }
+    }
+
+  }
+  
   function removeFood(id) {
     setFoodProfile(foodProfile.filter(food=>{
         return food.fdcId !== id

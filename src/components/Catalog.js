@@ -20,20 +20,20 @@ function Catalog( { foodProfile, setFoodProfile }) {
         fetch(queryLink , {
             method: 'GET'
         })
-        .then(r => r.json())
-        .then(myFoods => {
-            setFoods(myFoods.foods.filter( ( food ,index )=>{
-                let duplicate
-                
-                if (index ===0) {
-                    duplicate = false
-                } else {
-                    duplicate = ( myFoods.foods[index -1].description === food.description )
-                }
+            .then(r => r.json())
+            .then(myFoods => {
+                setFoods(myFoods.foods.filter( ( food ,index )=>{
+                    let duplicate
+                    
+                    if (index ===0) {
+                        duplicate = false
+                    } else {
+                        duplicate = ( myFoods.foods[index -1].description === food.description )
+                    }
 
-                return (!duplicate) && ( !(food.servingSize===undefined && food.foodMeasures.length===0))   
-            }))
-        })
+                    return (!duplicate) && ( !(food.servingSize===undefined && food.foodMeasures.length===0))   
+                }))
+            })
     }
 
     function addFood(id) {

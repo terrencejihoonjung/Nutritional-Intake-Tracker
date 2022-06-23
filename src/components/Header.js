@@ -15,9 +15,12 @@ function Header( { foodProfile, setFoodProfile, addToHistoryAndIntake, removeFoo
                 },
             body: JSON.stringify(food)
             })
+                .then(r => r.json())
+                .then(() => {
+                    addToHistoryAndIntake( food , 'foodHistory' )
+                    addToHistoryAndIntake( food , 'foodIntake' )
+                })
         })
-
-        addToHistoryAndIntake( foodProfile )
         
         setFoodProfile([])
     }

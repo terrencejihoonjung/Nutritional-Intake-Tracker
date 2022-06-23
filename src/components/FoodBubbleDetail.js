@@ -39,12 +39,6 @@ function FoodBubbleDetail({ food , removeFood }) {
         }
     }
 
-    function calculateInfo(string) {
-        const numString = parseInt(string, 10);
-        const calculatedValue = numString * quantity;
-        return calculatedValue.toString();
-    }
-
     food.foodNutrients.forEach(nutrient => {
         switch(nutrient.nutrientName) {
             case "Energy":
