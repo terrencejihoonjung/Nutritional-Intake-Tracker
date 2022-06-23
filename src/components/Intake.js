@@ -2,7 +2,7 @@ import React from "react";
 
 function Intake() {
     return (
-        <div>
+        <div id="food-intake" >
              <h1>This is Intake</h1>
         </div>
     )

@@ -1,0 +1,15 @@
+.profile-buttons {
+    list-style: none;
+    text-align: center;
+}
+
+.profile-buttons li {
+    display: inline;
+    border-style: solid;
+    border-radius: 15px;
+    background-color: #BADFE7;
+    margin: 0px 24px 0px 24px;
+    
+    font-size: 20px;
+    padding: 12px;
+}

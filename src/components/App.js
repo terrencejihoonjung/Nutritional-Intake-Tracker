@@ -1,4 +1,4 @@
-import React , { useState, Component } from 'react'
+import React , { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom';
 import NavBar from "./NavBar.js";
 import Home from "./Home.js";
@@ -13,6 +13,15 @@ import Header from "./Header.js";
 function App() {
 
   const [ foodProfile , setFoodProfile] = useState([])
+  const [ foodHistory , setFoodHistory] = useState([])
+
+  useEffect(()=>{
+    fetch("http://localhost:8000/foodHistory")
+      .then((r) => r.json())
+      .then((data) => {
+        setFoodHistory([...data]);
+      });
+  } , [])
 
   return (    
     <div>
