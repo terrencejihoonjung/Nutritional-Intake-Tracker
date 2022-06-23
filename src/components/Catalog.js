@@ -22,7 +22,17 @@ function Catalog( { foodProfile, setFoodProfile }) {
         })
         .then(r => r.json())
         .then(myFoods => {
-            setFoods(myFoods.foods)
+            setFoods(myFoods.foods.filter( ( food ,index )=>{
+                let duplicate
+                
+                if (index ===0) {
+                    duplicate = false
+                } else {
+                    duplicate = ( myFoods.foods[index -1].description === food.description )
+                }
+
+                return (!duplicate) && ( !(food.servingSize===undefined && food.foodMeasures.length===0))   
+            }))
         })
     }
 
@@ -50,7 +60,7 @@ function Catalog( { foodProfile, setFoodProfile }) {
                     <button type="submit">Search</button>
                 </form>
             </div>
-            <div className="row">
+            <div className="catalog-row">
                 {foods.map( food => {
                     return <FoodBubble key={food.fdcId} food={food} addFood={addFood} />
                 })}

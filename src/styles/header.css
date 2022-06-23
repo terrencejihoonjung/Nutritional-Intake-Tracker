@@ -1,14 +1,21 @@
 .header {
     background-color: #BADFE7;
     margin-top: 24px;
-    height: 224px;
+    height: 364px;
     position: relative
+}
+
+.mini-card {
+    border-style: solid;
+    border-radius: 15px;
+    padding: 4px 16px 4px 16px;
+    margin: 12px 12px 12px 12px;
 }
 
 .item-button {
     position: absolute;
     
-    bottom: 12px;
+    bottom: 16px;
     width: fill;
     height: 36px;
     margin-left: 264px;

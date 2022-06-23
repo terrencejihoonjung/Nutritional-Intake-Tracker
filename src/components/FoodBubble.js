@@ -3,8 +3,8 @@ import React from "react";
 function FoodBubble( { food , addFood } ) {
 
     function handleClick() {
-        addFood(food.fdcId)
         console.log(food)
+        addFood(food.fdcId)
     }
 
     return (

@@ -1,26 +1,33 @@
 /* Styling the Catalog Food Grid */
-.row {
+.catalog-row {
     display: flex;
     flex-wrap: wrap;
+    padding: 0 18px;
+}
+
+.header-row {
+    display: flex;
     padding: 0 4px;
+    overflow: auto;
+}
+
+.catalog-row:active {
+    background-color: #BADFE7;
+}
+
+.header-row:active {
+    background-color: #BADFE7;
 }
 
 .column {
     font-family: "Inter,sans-serif";
+    margin: 16px 6px 0px 6px;
     flex: 20%;
     padding: 2px;
-    margin-top: 16px;
     border-style: solid;
     border-radius: 15px;
     text-align: center;
     background-color: #BADFE7;
-}
-
-.column img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 15px;
 }
 
 /* Styling the Search Bar */
@@ -28,6 +35,8 @@
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    font-size: 20px;
+    font-family: "Degular,sans-serif";
 }
 
 input {

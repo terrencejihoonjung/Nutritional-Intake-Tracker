@@ -1,6 +1,11 @@
 import React from "react";
 
-function FoodBubbleDetail({ food }) {
+function FoodBubbleDetail({ food , removeFood }) {
+
+    function handleClick() {
+        console.log(food)
+        removeFood(food.fdcId)
+    }
 
     const nutrientInfo = {
         Calories: "",
@@ -31,33 +36,42 @@ function FoodBubbleDetail({ food }) {
     });
 
     return (
-        <div className="mini-card">
+        <div className="mini-card" onClick={handleClick}>
             <h4>{food.description}</h4>
             <table>
-                <trtr>
-                    <td>1 serving</td>
-                    <td>{food.servingSize +' '+ food.servingSizeUnit}</td>
-                </trtr>
-                <tr>
-                    <td>Calories</td>
-                    <td>{nutrientInfo["Calories"]}</td>
-                </tr>
-                <tr>
-                    <td>Protein</td>
-                    <td>{nutrientInfo["Protein"]}</td>
-                </tr>
-                <tr>
-                    <td>Sugar</td>
-                    <td>{nutrientInfo["Sugar"]}</td>
-                </tr>
-                <tr>
-                    <td>Carbohydrates</td>
-                    <td>{nutrientInfo["Carbohydrates"]}</td>
-                </tr>
-                <tr>
-                    <td>TotalFat</td>
-                    <td>{nutrientInfo["TotalFat"]}</td>
-                </tr>
+                <tbody>
+                    { food.servingSize === undefined ? 
+                        <tr>
+                            <td>{food.foodMeasures[0].disseminationText}</td> 
+                            <td>{food.foodMeasures[0].gramWeight + ' g'}</td> 
+                        </tr> :
+                        
+                        <tr>
+                            <td>Serving Size</td>
+                            <td>{food.servingSize +' '+ food.servingSizeUnit}</td> 
+                        </tr>
+                    }
+                    <tr>
+                        <td>Calories</td>
+                        <td>{nutrientInfo["Calories"]}</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td>{nutrientInfo["Protein"]}</td>
+                    </tr>
+                    <tr>
+                        <td>Sugar</td>
+                        <td>{nutrientInfo["Sugar"]}</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrates</td>
+                        <td>{nutrientInfo["Carbohydrates"]}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Fat</td>
+                        <td>{nutrientInfo["TotalFat"]}</td>
+                    </tr>
+                </tbody>
             </table> 
         </div>
     )
