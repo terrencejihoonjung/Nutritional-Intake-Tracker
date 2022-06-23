@@ -6,26 +6,21 @@ function Catalog( { foodToAddToUserProfile, setFoodToAddToUserProfile }) {
     const [listOfFoodToShow , setListOfFoodsToShow] = useState([])
 
     const x_app_key = process.env.REACT_APP_NUTRITION_APP_KEY
-    const x_app_id = process.env.REACT_APP_NUTRITION_APP_ID
     
     function handleChangeKeyword(e) {
         if (e.target.value !== '') {                
-            let queryLink = 'https://trackapi.nutritionix.com/v2/search/instant?query=' + e.target.value
+            let queryLink = 'https://api.nal.usda.gov/fdc/v1/foods/search?query=' + e.target.value
 
             fetch(queryLink , {
                 method: 'GET' ,
                 headers: {
-                    'x-app-id': x_app_id,
-                    'x-app-key': x_app_key
+                    'X-Api-Key': x_app_key,
                 }
             })
             .then(r => r.json())
-            .then(myFoods => {
-                setListOfFoodsToShow([ ...myFoods.branded])
-            })
+            .then(myFoods => console.log(myFoods))
+            }
         }
-    }
-
 
     function addFood(itemId) {
         let queryLink = `https://trackapi.nutritionix.com/v2/search/item?nix_item_id=${itemId}`
@@ -34,8 +29,7 @@ function Catalog( { foodToAddToUserProfile, setFoodToAddToUserProfile }) {
         fetch(queryLink , {
             method: 'GET' ,
             headers: {
-                'x-app-id': x_app_id,
-                'x-app-key': x_app_key
+                'X-Api-Key': x_app_key
             }
         })
         .then(r => r.json())
@@ -46,7 +40,6 @@ function Catalog( { foodToAddToUserProfile, setFoodToAddToUserProfile }) {
     }
 
     return (
-
         <div>
             <div className="search-bar" >
                 <label htmlFor="search">Search for Food Item: </label>
@@ -65,4 +58,5 @@ function Catalog( { foodToAddToUserProfile, setFoodToAddToUserProfile }) {
         </div>
     )
 }
+
 export default Catalog

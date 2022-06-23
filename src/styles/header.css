@@ -20,7 +20,7 @@
 
     box-shadow: 0 6px 0 #388087;
     background-color: #a1dee2;
-    transition: transform 0.3s ease-out, box-shadow;
+    transition: transform 0.1s ease-out, box-shadow;
 }
 
 .item-button:active {
