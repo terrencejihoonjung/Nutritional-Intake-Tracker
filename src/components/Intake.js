@@ -1,9 +1,16 @@
 import React from "react";
+import FoodBubbleDetail from "./FoodBubbleDetail";
+import "../styles/intake.css";
 
-function Intake() {
+function Intake( {foodIntake , removeFood } ) {
     return (
         <div id="food-intake" >
-             <h1>This is Intake</h1>
+            <div>Summary Table</div>
+            <div>
+            {foodIntake.map(food => {
+                return <FoodBubbleDetail key={food.fdcId} food={food} removeFood={removeFood} />
+            })} 
+            </div>
         </div>
     )
 }

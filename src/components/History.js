@@ -1,10 +1,18 @@
 import React from 'react';
+import FoodBubbleDetail from "./FoodBubbleDetail";
 import "../styles/profile.css"
 
-function History() {
+function History({ foods, removeFoodForever }) {
+    
     return (
-        <div id="food-history" >
-            <h1>This is the History!</h1>
+        <div>
+            <h1>My Food History</h1>
+            <br/>
+            <div className="catalog-row">
+                {foods.map( food => {
+                    return <FoodBubbleDetail key={food.fdcId} food={food} removeFood={ removeFoodForever } />
+                })}
+            </div>
         </div>
     )
 }

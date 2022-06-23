@@ -14,14 +14,51 @@ function App() {
 
   const [ foodProfile , setFoodProfile] = useState([])
   const [ foodHistory , setFoodHistory] = useState([])
+  const [ foodIntake , setFoodIntake] = useState([])
 
   useEffect(()=>{
-    fetch("http://localhost:8000/foodHistory")
-      .then((r) => r.json())
-      .then((data) => {
-        setFoodHistory([...data]);
-      });
-  } , [])
+      fetch("http://localhost:8000/foodHistory")
+        .then((r) => r.json())
+        .then((data) => {
+          setFoodHistory([...data]);
+        });
+    } , [])
+
+  function addToHistoryAndIntake(foods) {
+    foods.forEach(food => {
+      if (!foodHistory.includes(food)) {
+        setFoodHistory(currentFoodHistory => [...foodHistory, food]);
+      }
+      
+      if (!foodIntake.includes(food)) {
+        setFoodIntake(currentFoodIntake => [...foodIntake, food]);
+      }
+    })
+  }
+
+  function removeFood(id) {
+    setFoodProfile(foodProfile.filter(food=>{
+        return food.fdcId !== id
+    }))
+    setFoodIntake(foodProfile.filter(food=>{
+      return food.fdcId !== id
+  }))
+  }
+
+  function removeFoodForever(fdcid) {
+    let id
+    foodHistory.forEach( food =>{
+      if (food.fdcId === fdcid) {
+        id = food.id;
+      }
+    })
+
+    fetch(`http://localhost:8000/foodHistory/${id}`, {
+      method: "DELETE"
+    })
+    setFoodHistory(  foodHistory.filter(food => food.fdcId !== fdcid ) )
+    
+  }
 
   return (    
     <div>
@@ -29,20 +66,20 @@ function App() {
       
       <Switch>
           <Route exact path="/catalog" >
-              <Header foodProfile={foodProfile} setFoodProfile={setFoodProfile} />      
+              <Header foodProfile={foodProfile} setFoodProfile={setFoodProfile} addToHistoryAndIntake={addToHistoryAndIntake} removeFood={removeFood} />      
               <Catalog foodProfile={foodProfile} setFoodProfile={setFoodProfile} />
           </Route>
 
           <Route exact path="/profile" >
-              <Profile />
+              <Profile/>
           </Route>
 
           <Route exact path="/profile/history" >
-            <History />
+            <History foods={foodHistory} removeFoodForever={removeFoodForever}  />
           </Route>
 
           <Route exact path="/profile/intake" >
-            <Intake />
+            <Intake foodIntake={foodIntake} removeFood={removeFood} />
           </Route>
 
           <Route exact path="/" >

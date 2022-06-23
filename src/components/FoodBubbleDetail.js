@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import "../styles/FoodBubble.css";
 
 function FoodBubbleDetail({ food , removeFood }) {
 
-    function handleClick() {
+    const [quantity , setQuantity] = useState(food.quantity)
+
+    if (food.quantity === undefined) {
+        setQuantity(1)
+        food.quantity = quantity
+    } 
+    else {
+        food.quantity = quantity
+    }
+
+    function handleClick(e) {
+        e.stopPropagation()
         console.log(food)
         removeFood(food.fdcId)
     }
@@ -14,6 +26,24 @@ function FoodBubbleDetail({ food , removeFood }) {
         Carbohydrates: "",
         TotalFat: "",
     };
+
+    function handleIncrement(e) {
+        e.stopPropagation();
+        setQuantity(quantity => quantity + 1)
+    }
+
+    function handleDecrement(e) {
+        e.stopPropagation();
+        if (quantity > 1) {
+            setQuantity(quantity => quantity - 1)
+        }
+    }
+
+    function calculateInfo(string) {
+        const numString = parseInt(string, 10);
+        const calculatedValue = numString * quantity;
+        return calculatedValue.toString();
+    }
 
     food.foodNutrients.forEach(nutrient => {
         switch(nutrient.nutrientName) {
@@ -37,7 +67,20 @@ function FoodBubbleDetail({ food , removeFood }) {
 
     return (
         <div className="mini-card" onClick={handleClick}>
-            <h4>{food.description}</h4>
+            <div id="card-header">
+                <h4>{food.description}</h4>
+                <div className="container">
+                    <button onClick={handleIncrement} >
+                        ∆
+                    </button>
+                    <div id="total-count">
+                        {quantity}
+                    </div>
+                    <button onClick={handleDecrement}>
+                        ∇
+                    </button>
+                </div>
+            </div>
             <table>
                 <tbody>
                     { food.servingSize === undefined ? 
@@ -73,6 +116,7 @@ function FoodBubbleDetail({ food , removeFood }) {
                     </tr>
                 </tbody>
             </table> 
+            
         </div>
     )
 }

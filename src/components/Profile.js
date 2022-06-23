@@ -1,9 +1,10 @@
 import React from "react";
 import Info from "./Info";
+
 import { Route, Switch, NavLink, useRouteMatch } from 'react-router-dom';
 import "../styles/profile.css"
 
-function Profile() {
+function Profile(  ) {
 
     const match = useRouteMatch();
     console.log(match)
@@ -17,6 +18,9 @@ function Profile() {
                 <NavLink to={`${match.url}/intake`} >View my Daily Intake</NavLink>
                 </li>
             </ul>
+
+
+            
 
             <Info />
         </div>

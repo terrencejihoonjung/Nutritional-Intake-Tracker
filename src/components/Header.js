@@ -2,23 +2,24 @@ import React, { useEffect } from "react";
 import "../styles/header.css";
 import FoodBubbleDetail from "./FoodBubbleDetail.js";
 
-function Header( { foodProfile, setFoodProfile} ) {
-    
-    function removeFood(id) {
-        setFoodProfile(foodProfile.filter(food=>{
-            return food.fdcId !== id
-        }))
-    }
+function Header( { foodProfile, setFoodProfile, addToHistoryAndIntake, removeFood } ) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        fetch("http://localhost:8000/foodHistory", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(foodProfile[0])
+
+        foodProfile.forEach( food => {
+            fetch("http://localhost:8000/foodHistory", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            body: JSON.stringify(food)
+            })
         })
+
+        addToHistoryAndIntake( foodProfile )
+        
+        setFoodProfile([])
     }
     
     return (
