@@ -1,15 +1,14 @@
 import React from "react";
 import "../styles/header.css";
-import FoodCard from "./FoodCard";
-import MiniFoodCard from "./MiniFoodCard";
+import FoodBubbleDetail from "./FoodBubbleDetail.js";
 
-function Header( {foodToAddToUserProfile}) {
+function Header( { foodProfile, setFoodProfile} ) {
     return (
         <div className="header" >
             <div className="row">
-                {foodToAddToUserProfile.map((food,index)=>{
-                    return <MiniFoodCard key={food['nix_item_id']+food["tag_id"]+food['tag_name']+index} food = {food}/>
-})}
+                {foodProfile.map(food => {
+                    return <FoodBubbleDetail key={food.fdcId} food={food} />
+                })}
             </div>
 
             <form id="submit-food">

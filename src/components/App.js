@@ -12,7 +12,7 @@ import Header from "./Header.js";
 
 function App() {
 
-  const [ foodToAddToUserProfile , setFoodToAddToUserProfile] = useState([])
+  const [ foodProfile , setFoodProfile] = useState([])
 
   return (    
     <div>
@@ -20,8 +20,8 @@ function App() {
       
       <Switch>
           <Route exact path="/catalog" >
-              <Header foodToAddToUserProfile={foodToAddToUserProfile} setFoodToAddToUserProfile={setFoodToAddToUserProfile} />      
-              <Catalog foodToAddToUserProfile={foodToAddToUserProfile} setFoodToAddToUserProfile={setFoodToAddToUserProfile} />
+              <Header foodProfile={foodProfile} setFoodProfile={setFoodProfile} />      
+              <Catalog foodProfile={foodProfile} setFoodProfile={setFoodProfile} />
           </Route>
 
           <Route exact path="/profile" >
