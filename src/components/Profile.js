@@ -6,6 +6,7 @@ import "../styles/profile.css"
 
 function Profile(  ) {
 
+
     const match = useRouteMatch();
 
     return (
@@ -19,7 +20,7 @@ function Profile(  ) {
                 </li>
             </ul>
 
-            <Info />
+            {/* <Info /> */}
         </div>
 
     )

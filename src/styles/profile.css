@@ -1,6 +1,7 @@
 .profile-buttons {
     list-style: none;
     text-align: center;
+    margin-top: 124px;
 }
 
 .profile-buttons li {
@@ -12,4 +13,15 @@
     
     font-size: 20px;
     padding: 12px;
+
+    transition: background-color 2s ease-out 100ms;
+}
+
+.profile-buttons li a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.profile-buttons li:hover {
+    background-color:#388087;
 }
