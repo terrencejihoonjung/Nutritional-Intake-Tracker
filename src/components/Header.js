@@ -13,6 +13,7 @@ function Header( { foodProfile, setFoodProfile, addToHistoryAndIntake, removeFoo
         })
 
         setFoodProfile([])
+        e.target.reset();
     }
     
     return (

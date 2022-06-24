@@ -7,20 +7,17 @@ import "../styles/profile.css"
 function Profile(  ) {
 
     const match = useRouteMatch();
-    console.log(match)
 
     return (
         <div>
             <ul className="profile-buttons">
                 <li>
-                <NavLink to={`${match.url}/history`} >View My Food History</NavLink></li>
+                    <NavLink to={`${match.url}/history`} >View My Food History</NavLink>
+                </li>
                 <li>
-                <NavLink to={`${match.url}/intake`} >View my Daily Intake</NavLink>
+                    <NavLink to={`${match.url}/intake`} >View my Daily Intake</NavLink>
                 </li>
             </ul>
-
-
-            
 
             <Info />
         </div>
