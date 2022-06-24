@@ -16,7 +16,7 @@ function Intake( {foodIntake , removeFood } ) {
     let dailyInfo={...defaultInfo}
 
     const renderFoodBubbles = foodIntake.map(food => {
-        return <FoodBubbleDetail key={food.fdcId} food={food} removeFood={removeFood} />
+        return <FoodBubbleDetail key={food.fdcId} food={food} removeFood={()=>{}} />
     })
 
     //Iterate through each food in foodIntake and sum up the nutritional data

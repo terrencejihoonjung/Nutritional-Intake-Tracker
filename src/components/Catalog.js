@@ -8,7 +8,6 @@ function Catalog( { foodProfile, setFoodProfile }) {
     const [foods, setFoods] = useState([])
 
     const api_key = process.env.REACT_APP_NUTRITION_API_KEY
-    console.log(api_key);
     
     function handleChangeKeyword(e) {
         SetKeyWord(e.target.value)
