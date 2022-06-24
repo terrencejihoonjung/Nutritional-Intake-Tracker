@@ -1,3 +1,18 @@
+#intake-container h1 {
+    text-align: center;
+}
+
 #food-intake {
+    display: flex;
+    justify-content: center;
+}
+
+#health-table tbody td {
+    border: 1px solid black;
+    padding: 12px;
+    font-size: 20px;
+}
+
+.intake-part {
     display: flex;
 }

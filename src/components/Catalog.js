@@ -22,7 +22,7 @@ function Catalog( { foodProfile, setFoodProfile }) {
         })
             .then(r => r.json())
             .then(myFoods => {
-                setFoods(myFoods.foods.filter( ( food ,index )=>{
+                setFoods(myFoods.foods.filter( ( food ,index ) => {
                     let duplicate
                     
                     if (index ===0) {
@@ -37,12 +37,8 @@ function Catalog( { foodProfile, setFoodProfile }) {
     }
 
     function addFood(id) {
-        if ( foodProfile.filter(food=> {
-            return food.fdcId === id
-        }).length === 0 ){
-            setFoodProfile( [...foodProfile , ...foods.filter( food=> {
-                return food.fdcId === id
-            })])
+        if ( foodProfile.filter(food => food.fdcId === id).length === 0 ) {
+            setFoodProfile( [...foodProfile , ...foods.filter(food=> food.fdcId === id) ])
         }
     }
 
