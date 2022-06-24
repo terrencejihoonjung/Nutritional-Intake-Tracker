@@ -6,7 +6,7 @@ function History({ foods, removeFoodForever }) {
     
     return (
         <div>
-            <h1>My Food History</h1>
+            <h1>These are what I ate in the past:</h1>
             <br/>
             <div className="catalog-row">
                 {foods.map( food => {

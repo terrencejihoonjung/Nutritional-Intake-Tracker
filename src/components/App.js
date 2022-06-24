@@ -52,6 +52,8 @@ function App() {
   }
 
   function addToHistoryAndIntake(food , foodList) {
+    // food history
+    
     if (foodList === "foodHistory") {
       
       if ( (! (isIn( food, foodHistory)[0]) ) ) {
@@ -81,7 +83,7 @@ function App() {
             body: JSON.stringify({quantity: newQuantity})
           })
           .then(r => r.json())
-          .then( setFoodHistory(foodHistory.map( oneFood=>{
+          .then( setFoodHistory(foodHistory => foodHistory.map( oneFood=>{
             if (oneFood.fdcId === food.fdcId) {
               return {...oneFood , quantity:newQuantity }
             } else {
@@ -91,6 +93,48 @@ function App() {
         }
     }
 
+    // daily intake
+
+    if (foodList === "foodIntake") {
+      
+      if ( (! (isIn( food, foodIntake)[0]) ) ) {
+          setFoodIntake(foodIntake => [...foodIntake, food]);
+
+          fetch("http://localhost:8000/dailyIntake", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            body: JSON.stringify(food)
+            })
+                .then(r => r.json())
+                .then(() => {
+          })
+
+        } else {
+          
+          let originalQuantity = isIn( food, foodIntake)[1]
+          let newQuantity = originalQuantity + food.quantity        
+          console.log(food.fdcId)
+          fetch(`http://localhost:8000/dailyIntake/${food.fdcId}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({quantity: newQuantity})
+          })
+          .then(r => r.json())
+          .then( setFoodIntake(foodIntake => foodIntake.map( oneFood=>{
+            if (oneFood.fdcId === food.fdcId) {
+              return {...oneFood , quantity:newQuantity }
+            } else {
+              return {...oneFood}
+            }
+          })) )
+        }
+    }
+
+    //
   }
   
   function removeFood(id) {
