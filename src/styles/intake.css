@@ -5,6 +5,7 @@
 #food-intake {
     display: flex;
     justify-content: center;
+    margin-top: 18px;
 }
 
 #health-table tbody td {
@@ -15,4 +16,23 @@
 
 .intake-part {
     display: flex;
+}
+
+#reset-button {
+    display: block;
+    margin: auto;
+    border-radius: 15px;
+    padding: 16px;
+
+    font-family: "Inter,sans-serif";
+    font-size: 20px;
+    box-shadow: 0 6px 0 #388087;
+    background-color: #a1dee2;
+
+    transition: transform 0.1s ease-out, box-shadow;
+}
+
+#reset-button:active {
+    box-shadow: none;
+    transform: translateY(6px);
 }

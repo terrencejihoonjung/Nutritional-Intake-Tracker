@@ -161,6 +161,16 @@ function App() {
     
   }
 
+  function removeFoodFromIntake() {
+    foodIntake.forEach( food => {
+    fetch(`http://localhost:8000/dailyIntake/${food.fdcId}`, {
+      method: "DELETE"
+    }) } )
+    setFoodIntake([])
+    console.log('Food intake deleted.')
+  }
+
+
   return (    
     <div>
       <NavBar />
@@ -180,7 +190,7 @@ function App() {
           </Route>
 
           <Route exact path="/profile/intake" >
-            <Intake foodIntake={foodIntake} removeFood={removeFood} />
+            <Intake foodIntake={foodIntake} removeFood={removeFood} removeFoodFromIntake={removeFoodFromIntake} />
           </Route>
 
           <Route exact path="/" >

@@ -10,7 +10,11 @@ const defaultInfo = {
     totalFat: 0,
 }
 
-function Intake( {foodIntake , removeFood } ) {
+function Intake( {foodIntake , removeFood , removeFoodFromIntake } ) {
+
+    function resetIntake() {
+        removeFoodFromIntake()
+    }
 
     // const [dailyInfo, setDailyInfo] = useState(defaultInfo);
     let dailyInfo={...defaultInfo}
@@ -70,6 +74,7 @@ function Intake( {foodIntake , removeFood } ) {
     return (
         <div id="intake-container">
             <h1>These are what I ate today:</h1>
+            <button id="reset-button" onClick={resetIntake}>Reset Intake</button>
             <div id="food-intake" className="intake-part">
                 {renderFoodBubbles} 
 
