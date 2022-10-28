@@ -1,8 +1,7 @@
-# Nutrition Intake Tracker
-### by Terrence Jung and Yifan Wu
-Purpose: Track your daily intake and view a summary table of your nutritional intake.
+# Nutrition Intake Tracker by Terrence Jung and Yifan Wu
+Track your daily intake and view a summary table of your nutritional intake.
 
-## Technology
+## Technologies
 
 * Javascript
 * React.js
