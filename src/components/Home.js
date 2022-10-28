@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/home.css';
 
 function Home() {
 
@@ -25,6 +26,11 @@ function Home() {
                     All the nutrition data are provided by U.S. Department of Agriculture FoodData Central.
                 </li>
             </ul>
+
+            <h3>By Terrence Jung (<a href="https://github.com/terrencejihoonjung">GitHub</a> | 
+                            <a href="https://www.linkedin.com/in/terrencejung/">LinkedIn</a>) and 
+                        Yifan Wu (<a href="https://github.com/Luxury-Duckling-Services">GitHub</a> | 
+                            <a href="https://www.linkedin.com/in/yifan-wu-breakthrough/">LinkedIn</a>)</h3>
         </div>
     )
 }
