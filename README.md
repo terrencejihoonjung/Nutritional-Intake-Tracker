@@ -1,4 +1,4 @@
-# Nutrition Intake Tracker by Terrence Jung and Yifan Wu
+# Nutrition Intake Tracker
 Track your daily intake and view a summary table of your nutritional intake.
 
 ## Technologies
