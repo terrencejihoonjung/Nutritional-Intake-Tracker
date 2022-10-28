@@ -23,7 +23,7 @@ function Home() {
                     The foods in your food intake list contain nutritional information that will used to calculate a summary table!
                 </li>
                 <li style={listStyle}>
-                    All the nutrition data are provided by U.S. Department of Agriculture FoodData Central.
+                    All the nutrition data are provided by U.S. Department of Agriculturgi e FoodData Central.
                 </li>
             </ul>
 
