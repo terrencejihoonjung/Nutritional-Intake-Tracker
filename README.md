@@ -1,7 +1,7 @@
 # Nutrition Intake Tracker
 Track your daily intake and view a summary table of your nutritional intake.
 
-Deployed [here:] (https://terrencejihoonjung.github.io/Nutritional-Intake-Tracker/) 
+Deployed here: https://terrencejihoonjung.github.io/Nutritional-Intake-Tracker/
 
 ## Technologies
 
